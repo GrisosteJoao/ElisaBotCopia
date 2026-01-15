@@ -1,4 +1,4 @@
-# ElisaBotCopia
+# ElisaBot
 
 Este é um chatbot inspirado no clássico **ELIZA (1966)**, feito para estudos de **JavaScript**.  
 Ele não segue exatamente o algoritmo original, mas usa **funções assíncronas** para responder a partir de palavras-chave e manter uma conversa contínua, como se estivesse realmente ouvindo você.
