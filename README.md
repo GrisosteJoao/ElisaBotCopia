@@ -44,4 +44,4 @@ Ele não segue exatamente o algoritmo original, mas usa **funções assíncronas
 3. No terminal, execute:
    
 ```bash
-npm elisa-anya.js
+node elisa-anya.js
