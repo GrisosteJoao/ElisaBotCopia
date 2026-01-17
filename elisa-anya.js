@@ -157,10 +157,10 @@ async function elisaReflection(words)  // Aplica regras de reflexão e separa pa
             else if (!["ME", "TE", "SE", "NOS", "LHE", "LHES"].includes(words[i]))
             {
                 otherwords.push(words[i]);
-            }
+            };
         }
 
-        finalphrase = phrasereflections.concat(otherwords);
+        finalphrase = [...phrasereflections, ...otherwords.filter(w => !phrasereflections.includes(w))];
 
         result({
             otherwords,
@@ -346,15 +346,15 @@ async function emotionsFilter(otherwords)  // Detecta emoções a partir das pal
 function sentenceNormalizer(sentence) // Corrige estruturas gramaticais da frase final usando regras baseadas em regex
 {
     const grammarRules = [
-        { pattern: /\bVOCE\s+SÃO\b/g, replace: "VOCE É" },
-
+        { pattern: /\bVOCE\s+SAO\b/g, replace: "VOCE É" },
         { pattern: /^VOCE\s+E\b/g, replace: "VOCES" },
-
-        { pattern: /\bVOCE\s+(SUA|SEU|SUAS|SEUS)\b/g, replace: "VOCE" },
-
-        { pattern: /\b(QUER|PODE|PRECISA)\s+NAO\b/g, replace: "NAO $1" },
         
-        { pattern: /\s{2,}/g, replace: " " }
+        { pattern: /\bVOCE\s+(SUA|SEU|SUAS|SEUS)\s+(?=\w)/g, replace: "VOCE " },
+        
+        { pattern: /\b(QUER|PODE|PRECISA)\s+NAO\b/g, replace: "NAO $1" },
+        { pattern: /\s{2,}/g, replace: " " },
+
+        { pattern: /^\s+|\s+$/g, replace: "" }
     ];
 
     return grammarRules.reduce((s, rule) => {
