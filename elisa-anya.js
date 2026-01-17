@@ -95,6 +95,7 @@ async function elisaReflection(words)  // Aplica regras de reflexão e separa pa
         "VOCE": "EU",
 
         "ME":"SE",
+        "COMIGO":"COM VOCE",
 
         "MEU": "SEU",
         "MINHA": "SUA",
@@ -112,6 +113,8 @@ async function elisaReflection(words)  // Aplica regras de reflexão e separa pa
         "ESTÃO": "ESTAMOS",
 
         "SOU": "É",
+        "SER": "É",
+        "QUE":"QUE",
         "É": "SOU",
         "SOMOS": "SÃO",
         "SÃO": "SOMOS",
@@ -140,7 +143,10 @@ async function elisaReflection(words)  // Aplica regras de reflexão e separa pa
         "PENSO": "PENSA",
         "PENSA": "PENSO",
 
-        "NOS":"VOCES"
+        "NOS":"VOCES",
+
+        "SEI":"SABE",
+        "FICO":"FICA",
     };
 
 
@@ -160,7 +166,7 @@ async function elisaReflection(words)  // Aplica regras de reflexão e separa pa
             };
         }
 
-        finalphrase = [...phrasereflections, ...otherwords.filter(w => !phrasereflections.includes(w))];
+        finalphrase = words.map(w => reflections[w] || w);
 
         result({
             otherwords,
@@ -192,6 +198,7 @@ async function emotionsFilter(otherwords)  // Detecta emoções a partir das pal
         "SOZINHA": "TRISTEZA",
 
         "FELIZ": "FELICIDADE",
+        "FELICIDADE":"FELICIDADE",
         "FELIZES": "FELICIDADE",
         "ALEGRE": "FELICIDADE",
         "ALEGRES": "FELICIDADE",
