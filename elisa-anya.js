@@ -353,9 +353,7 @@ function sentenceNormalizer(sentence) // Corrige estruturas gramaticais da frase
         { pattern: /\bVOCE\s+(SUA|SEU|SUAS|SEUS)\b/g, replace: "VOCE" },
 
         { pattern: /\b(QUER|PODE|PRECISA)\s+NAO\b/g, replace: "NAO $1" },
-
-        { pattern: /\b(ME|TE|NOS|LHE|LHES)\b/g, replace: "" },
-
+        
         { pattern: /\s{2,}/g, replace: " " }
     ];
 
